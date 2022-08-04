@@ -2,7 +2,7 @@ class ConstServer {
   /// ************************************************************************************************************************************/
 
   // Domain Name
-  static const domaiNname = 'http://192.168.1.7:8000';
+  static const domaiNname = 'http://192.168.43.10:8000';
 
   /// ************************************************************************************************************************************/
 
@@ -120,4 +120,8 @@ class ConstServer {
   static const takeRecord = '/api/ShowAllMyTakeRecord';
   static const payRecordDetails = '/api/ShowAllAddByPay?pay_id=';
 /**************************************************************************************************************************************/
+  static const storeNotification = '/api/storetoken';
+  static const showAllMyNotification = '/api/ShowAllMyNotification';
+  static const deleteMyNotification = '/api/DeleteMyNotification?id=';
+  static const deleteAllMyNotification = '/api/DeleteAllMyNotifications';
 }

@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:shopping_home/const_server.dart';
 import 'package:http/http.dart' as http;
 import 'package:shopping_home/models/cases_from_server.dart';
@@ -10,6 +11,8 @@ import 'package:shopping_home/models/secure_storage.dart';
 
 class SignInServes {
   var url = Uri.parse(ConstServer.domaiNname + ConstServer.signIn);
+  var notiUrl =
+      Uri.parse(ConstServer.domaiNname + ConstServer.storeNotification);
   var message;
   String? token = '';
 
@@ -29,6 +32,19 @@ class SignInServes {
         message = jsonResponse['success'];
         token = jsonResponse['token'];
         UserInformation.myToken = token;
+
+        final notificationToken = await FirebaseMessaging.instance.getToken();
+
+        var notificationResponse = await http.get(
+          notiUrl,
+          headers: {
+            'token': '$notificationToken',
+            'Authorization': 'Bearer $token'
+          },
+        );
+
+        print(notificationResponse.body);
+        print(notificationResponse.statusCode);
 
         if (remember) {
           //save token to the device

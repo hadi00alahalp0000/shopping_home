@@ -27,7 +27,7 @@ class AddProductToMyOrderServes {
           'quantities': quantities.toString(),
         },
       );
-
+print(response.body);
       if (response.statusCode == 200) {
         message = CasesFromServer.addProductToMyOrder;
         return CasesFromServer.can;

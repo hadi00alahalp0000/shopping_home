@@ -1,33 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shopping_home/controllers/my_notification_controller.dart';
+import 'package:shopping_home/models/notification.dart';
 
 import '../../../size_config.dart';
 import 'notification_card.dart';
 
 class Body extends StatefulWidget {
+  const Body({Key? key}) : super(key: key);
+
   @override
   BodyState createState() => BodyState();
 }
 
 class BodyState extends State<Body> {
+  List<MyNotification> myNotifications =
+      ShowMyNotificationController.myNotifications;
+  ShowMyNotificationController controller = ShowMyNotificationController();
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(10)),
       child: ListView.builder(
-        itemCount: 5, // controller.notification.lenght
+        itemCount: myNotifications.length,
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.symmetric(vertical: 6),
           child: Dismissible(
-            key: const Key(
-                ''), //key: Key(controller.notification[index].notification.id.toString()),
+            key: Key(index.toString()),
             direction: DismissDirection.endToStart,
-            onDismissed: (direction) {
-              setState(() {
-                // remove notification controller method
-                //controller.cartproducts.removeAt(index);
-              });
+            onDismissed: (direction) async {
+              await controller.deleteMyNotification(myNotifications[index].id);
             },
             background: Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -43,7 +46,7 @@ class BodyState extends State<Body> {
               ),
             ),
             child: NotificationCard(
-              text: "New Notification", // notification body
+              text: myNotifications[index].title, // notification body
               press: () => {}, // go to what the notification about,
             ),
           ),

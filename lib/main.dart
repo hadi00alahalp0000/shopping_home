@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -6,6 +7,7 @@ import 'package:shopping_home/getx_binding/add_product_binding.dart';
 import 'package:shopping_home/getx_binding/category_binding.dart';
 import 'package:shopping_home/getx_binding/edit_product_binding.dart';
 import 'package:shopping_home/getx_binding/forget_password_binding.dart';
+import 'package:shopping_home/getx_binding/notification_binding.dart';
 import 'package:shopping_home/getx_binding/profile_binding.dart';
 import 'package:shopping_home/getx_binding/record_binding.dart';
 import 'package:shopping_home/getx_binding/review_binding.dart';
@@ -49,6 +51,8 @@ import 'getx_binding/sign_in_binding.dart';
 import 'models/secure_storage.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   try {
     late SecureStorage storage = SecureStorage();
     String? languge = await storage.read('language');
@@ -162,6 +166,7 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/Notifications',
           page: () => NotificationsScreen(),
+          binding: NotificationBinding(),
         ),
         GetPage(
           name: '/Change_password',

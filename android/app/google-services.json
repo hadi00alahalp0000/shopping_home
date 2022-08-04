@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "571469407032",
+    "project_id": "shopping-home-880d0",
+    "storage_bucket": "shopping-home-880d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571469407032:android:518c934bd3ba0fb6f997cd",
+        "android_client_info": {
+          "package_name": "com.example.shopping_home"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "571469407032-16293n4pe45qveg0si7rf06km1bg6rn2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcibw8wJngoS7hzD-5K2Au9rF5vawqY0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "571469407032-16293n4pe45qveg0si7rf06km1bg6rn2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

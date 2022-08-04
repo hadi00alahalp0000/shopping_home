@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, unnecessary_new, unnecessary_type_check, prefer_adjacent_string_concatenation, prefer_interpolation_to_compose_strings
 
 import 'package:dio/dio.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:shopping_home/controllers/send_image_controller.dart';
 import 'package:shopping_home/models/cases_from_server.dart';
@@ -17,6 +19,8 @@ class SignUpServes {
   String? token = '';
   late Map<String, dynamic> errorMap;
   //Url
+  var notiUrl =
+      Uri.parse(ConstServer.domaiNname + ConstServer.storeNotification);
   var url = ConstServer.domaiNname + ConstServer.register;
   //Controller
   SendImageController controller = Get.put(SendImageController());
@@ -48,8 +52,20 @@ class SignUpServes {
       //var jsonResponse = jsonDecode(response.data);
       message = CasesFromServer.welcomeWithUs;
       // Get Token From Server
-      token = response.data['data']['token'];
+      token = response.data['token'];
       UserInformation.myToken = token;
+      final notificationToken = await FirebaseMessaging.instance.getToken();
+
+      var notificationResponse = await http.get(
+        notiUrl,
+        headers: {
+          'token': '$notificationToken',
+          'Authorization': 'Bearer $token'
+        },
+      );
+      print(notificationResponse.body);
+      print(notificationResponse.statusCode);
+
       // Get User Id From Server
       dynamic sendMyImage = response.data['data'];
       var id = sendMyImage['user'];

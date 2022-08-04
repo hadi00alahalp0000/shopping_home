@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shopping_home/controllers/my_notification_controller.dart';
 import 'package:shopping_home/controllers/show_my_order_controller.dart';
 
 import '../../../size_config.dart';
@@ -32,7 +33,11 @@ class HomeHeader extends StatelessWidget {
           IconBtnWithCounter(
             svgSrc: "assets/icons/Bell.svg",
             numOfItems: 3, // number of unreaded notifications
-            press: () => Get.toNamed("/Notifications"),
+            press: () { ShowMyNotificationController notificationController =
+                  Get.put(ShowMyNotificationController());
+              notificationController.getMyNotifications();
+              }
+            ,
           ),
         ],
       ),

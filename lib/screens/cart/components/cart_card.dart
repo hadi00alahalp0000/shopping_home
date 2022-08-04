@@ -32,8 +32,8 @@ class CartCard extends StatelessWidget {
               // because its network image want the domain name
               child: FittedBox(
                 fit: BoxFit.fill,
-                child: Image.network(
-                    ConstServer.domaiNname + '/' + cartproduct.product.imgUrl),
+                child: /* Image.network(
+                    ConstServer.domaiNname + '/' + cartproduct.product.imgUrl) */ Image.asset('assets/images/big_logo.png'),
               ),
                   
             ),

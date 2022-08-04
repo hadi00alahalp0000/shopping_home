@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -17,9 +18,15 @@ class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
   @override
   State<Body> createState() => BodyState();
+  
 }
 
 class BodyState extends State<Body> {
+  @override
+  void initState() {
+    FirebaseMessaging.instance.getToken().then((value) => print(value));
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> sortl = [

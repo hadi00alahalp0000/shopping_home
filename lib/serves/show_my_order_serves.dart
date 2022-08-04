@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
 import 'package:shopping_home/models/cases_from_server.dart';
 import 'package:shopping_home/models/my_order.dart';
@@ -14,7 +15,7 @@ class ShowMyOrderServes {
   var refresh = false;
   var url = Uri.parse(ConstServer.domaiNname + ConstServer.showMyOrder);
   Future<String> reciveMyOrder(String? token) async {
-    try {
+    //try {
       var response = await http.get(
         url,
         headers: {
@@ -46,9 +47,9 @@ class ShowMyOrderServes {
         message = CasesFromServer.noInternet;
         return CasesFromServer.cant;
       }
-    } catch (e) {
+    /* } catch (e) {
       message = CasesFromServer.noInternet;
       return CasesFromServer.cant;
-    }
+    } */
   }
 }
