@@ -265,7 +265,7 @@ class ShowProductsController extends GetxController {
   // Want the Route Name To Be Finished:
   void goToCategoryProducts(String info) {
     productsByCategoryId = service.products;
-    Get.offAllNamed('');
+    Get.toNamed('/Category');
     EasyLoading.showInfo(
       info,
       duration: Duration(

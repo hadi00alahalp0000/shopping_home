@@ -279,10 +279,10 @@ class ContactId {
   int id;
   String contactEmail;
   String phoneNumber;
-  String facebookUrl;
-  String telegramUrl;
-  String whatsapp;
-  String skype;
+  String? facebookUrl;
+  String? telegramUrl;
+  String? whatsapp;
+  String? skype;
   String? twitter;
   DateTime? createdAt;
   DateTime? updatedAt;
