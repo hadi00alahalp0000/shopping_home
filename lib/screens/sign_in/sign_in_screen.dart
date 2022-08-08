@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:shopping_home/screens/sign_in/components/body.dart';
 import 'package:shopping_home/size_config.dart';
-
+//Sign in page
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key? key}) : super(key: key);
   static String routeName = "/sign_in";
